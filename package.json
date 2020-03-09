@@ -1,0 +1,11 @@
+{
+  "name": "live-stream-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MrPeaceDuke/live-stream-web.git",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}
