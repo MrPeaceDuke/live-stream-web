@@ -2,24 +2,15 @@ const playVideo = require('./playVideo');
 const Peer = require('simple-peer');
 const $ = require('jquery');
 
-var clients = []
-
-
 function openStream(){
     navigator.mediaDevices.getUserMedia({ audio:false, video:true })
     .then(stream => {
         playVideo(stream, 'localStream');
 
-        const p = new Peer({ initiator: true, trickle: false, stream });
+        const p = new Peer({ initiator: location.hash === '#1', trickle: false, stream });
 
         p.on('signal', token => {
-            $('#tokenArea').val(JSON.stringify(token));
-            clients.push(JSON.stringify(token));
-            let url = document.createElement('a');
-            url.id = 'tokenID';
-            url.href = JSON.stringify(token);
-            url.innerText = 'Token ' + clients.length;
-            document.getElementById('urls').appendChild(url);
+            $('#tokenArea').val(JSON.stringify(token))
         });
 
         $('#btnConnect').click(() => {
